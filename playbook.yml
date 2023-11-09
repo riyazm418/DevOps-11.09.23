@@ -1,8 +1,0 @@
----
-hosts: all
-become: true
-tasks:
-  -  name: copying index.html file to the manage node
-     copy:
-      src:
-      dest:

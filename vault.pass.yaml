@@ -1,9 +1,0 @@
-  - hosts: all
-    remote_user: ec2-user
-    become: yes
-    vars_files:
-      pass.yaml
-    tasks:
-    - name: we are using echo commet to passs the message then using valut.pass
-      debug:
-       msg: hello my username is {{username}} & password is {{password}}
