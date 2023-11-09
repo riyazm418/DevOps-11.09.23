@@ -1,0 +1,14 @@
+  - hosts: all
+    remote_user: ec2-user
+    become: yes
+    tasks:
+    - name: install the present version of tools also yum update
+      yum:
+        name: '*'
+        name: "{{ item }}"
+        state: present
+      loop:  
+        - php
+        - mysql
+        - unzip
+        - http_present

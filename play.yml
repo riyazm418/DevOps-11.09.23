@@ -1,0 +1,21 @@
+- hosts: all
+  remote_user: ec2-user
+  become: yes
+  tasks:
+  - name: getting os name 
+    shell: 'cat /etc/os-release | grep -i id_like | cut -d "=" -f2 '
+    register: os
+
+  - name: install nginx  in amazon machine
+    when: os.stdout ==  '"centos rhel fedora"'
+    yum:
+      name: nginx
+      state: present
+   
+  
+  - name: install nginx  in ubuntu machine
+    when: os.stdout == "debian"
+    apt:
+     name: nginx
+     state: present
+    
